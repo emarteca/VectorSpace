@@ -1,6 +1,11 @@
 
 #include "W2.h"
 
+/*
+    Addition of another vector to "this" vector - same type.  Non-standard addition defined:
+        x1 + x2 = x1 + x2 + 1
+        y1   y2   y1 + y2
+*/
 template <typename eltType, typename scalType> const W2<eltType, scalType> W2<eltType, scalType>::operator +
                                                                                 (const W2<eltType, scalType>& v) const {
     W2<eltType, scalType> sum(this->vect);
@@ -11,6 +16,15 @@ template <typename eltType, typename scalType> const W2<eltType, scalType> W2<el
     return sum;
 }
 
+/*
+    Scalar multiplication of "this" vector by a scalar of specified type (scalType).  Non-standard operation defined:
+        s * x = s * x + s - 1
+                y   s * y
+
+    Note: scalar appears after the vector in the operation i.e.
+        vector * scalar --> OK
+        scalar * vector --> not defined
+*/
 template <typename eltType, typename scalType> const W2<eltType, scalType> W2<eltType, scalType>::operator *
                                                                                 (const scalType& s) const {
 
@@ -22,6 +36,11 @@ template <typename eltType, typename scalType> const W2<eltType, scalType> W2<el
     return prod;
 }
 
+/*
+    Return a symbolic (i.e. type SymbCheck_Real) representation of what a vector belonging to this space looks like.
+    This is to provide a restriction in order to check the closure axioms --> NOT DONE!
+    This is a WORK IN PROGRESS.
+*/
 template <typename eltType, typename scalType> const W2<SymbCheck_Real, SymbCheck_Real> W2<eltType, scalType>::getSampleRest() const {
     SymbCheck_Real vs[2];
     int curChar = 65;
