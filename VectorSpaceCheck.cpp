@@ -3,6 +3,9 @@
 #include "SymbCheck_Real.h"
 #include <iostream>
 
+/*
+    Axiom 1: x + y == y + x
+*/
 template <class VS, const int len> bool VectorSpaceCheck<VS, len>::checkAxiom1() const {
     SymbCheck_Real v1s[len], v2s[len];
     int curChar = 65;
@@ -20,6 +23,9 @@ template <class VS, const int len> bool VectorSpaceCheck<VS, len>::checkAxiom1()
     return (LS == RS);
 }
 
+/*
+    Axiom 2: (x + y) + z == x + (y + z)
+*/
 template <class VS, const int len> bool VectorSpaceCheck<VS, len>::checkAxiom2() const {
     SymbCheck_Real v1s[len], v2s[len], v3s[len];
     int curChar = 65;
@@ -38,6 +44,10 @@ template <class VS, const int len> bool VectorSpaceCheck<VS, len>::checkAxiom2()
     return (LS == RS);
 }
 
+/*
+    Axiom 3: The zero vector exists such that x + 0 = x for all x in the space
+    Here: find the 0 vector by x + (-1) * x
+*/
 template <class VS, const int len> bool VectorSpaceCheck<VS, len>::checkAxiom3() const {
     SymbCheck_Real vs[len];
     int curChar = 65;
@@ -56,6 +66,11 @@ template <class VS, const int len> bool VectorSpaceCheck<VS, len>::checkAxiom3()
     return isInt;
 }
 
+/*
+    Return the symbolic representation of the zero vector for this space.
+    Here: find the 0 vector by x + (-1) * x
+    Note: if axiom 3 is false (i.e. if there is no 0 vector), then, return NULL
+*/
 template <class VS, const int len> const VS VectorSpaceCheck<VS, len>::getZeroVector() const {
     if (!checkAxiom3())
         return NULL; // if the 0 vector does not exist, return NULL
@@ -73,6 +88,10 @@ template <class VS, const int len> const VS VectorSpaceCheck<VS, len>::getZeroVe
 
 }
 
+/*
+    Axiom 4: For every x belongs to the space, there exists y such that x + y = 0
+    Here take y = (-1) * x
+*/
 template <class VS, const int len> bool VectorSpaceCheck<VS, len>::checkAxiom4() const {
     SymbCheck_Real vs[len];
     int curChar = 65;
