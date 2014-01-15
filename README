@@ -9,7 +9,7 @@ The idea:
 The VectorSpaceCheck template class takes in a space class and its dimension.  Once this has been set up, any (or all) or the 8 vector space axioms can be checked for this space.
 Ideally, this would also be able to check the 2 closure axioms, however this has not been implemented yet.
 
-So, to work with this, I have included a basic n-dimensional vector space template, V (can specify element type, scalar multiple type, and dimension), where addition and scalar multiplication are defined in the standard element-wise form.  There is also a 2D vector space, W2 (with V as a base class) which redefined addition and scalar multiplication in a non-standard way.  Note, though, that this is a vector space (satisfies all the axioms).
+So, to work with this, I have included a basic n-dimensional vector space template, V (can specify element type, scalar multiple type, and dimension), where addition and scalar multiplication are defined in the standard element-wise form.  There is also a 2D vector space, W2 (with V as a base class) which redefined addition and scalar multiplication in a non-standard way.  Note that this space satisfies all the axioms.
 
 The functionality:
 
@@ -23,6 +23,10 @@ Now, the variable CHECK can be used to check the axioms.  For example:
 There are some examples of this use in main.cpp.
 
 All code (especially SymbCheck_Real) is thoroughly commented!  Details of function implementation is all contained in the project files.
+
+Why did I do this?
+
+... Well, I thought it was cool! :)
 
 Disclaimers:
 
