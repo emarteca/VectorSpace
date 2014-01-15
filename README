@@ -1,0 +1,44 @@
+Hi!
+
+This README file describes the basics of the VectorSpace project and how it works.  So, I hope you're reading this before checking out the code!
+
+Note: This project is written entirely in C++, mainly to take advantage of the operator overloading this language allows.  However, C++ also has its limitations, as noticeable in the painful methods used to concatenate strings with various primitives.
+
+The idea:
+
+The VectorSpaceCheck template class takes in a space class and its dimension.  Once this has been set up, any (or all) or the 8 vector space axioms can be checked for this space.
+Ideally, this would also be able to check the 2 closure axioms, however this has not been implemented yet.
+
+So, to work with this, I have included a basic n-dimensional vector space template, V (can specify element type, scalar multiple type, and dimension), where addition and scalar multiplication are defined in the standard element-wise form.  There is also a 2D vector space, W2 (with V as a base class) which redefined addition and scalar multiplication in a non-standard way.  Note, though, that this is a vector space (satisfies all the axioms).
+
+The functionality:
+
+To get this to work, I wrote the SymbCheck_Real class - the idea of which is to take in a string representation of an expression and parse it into 2 vectors (one vector of all the variables contained in the expression, and one vector of doubles with the corresponding coefficients).  Then, using this class, basic algebra can be performed.
+
+To actually check the axioms, initialize an instantiation of VectorSpaceCheck with a space class of type SymbCheck_Real - then, the axioms can be checked algebraically to see if they are actually true for all vectors.
+For example, to check W2...
+	VectorSpaceCheck<W2<SymbCheck_Real, SymbCheck_Real>, 2> CHECK;
+Now, the variable CHECK can be used to check the axioms.  For example:
+	bool ax1 = CHECK.checkAxiom1();
+There are some examples of this use in main.cpp.
+
+All code (especially SymbCheck_Real) is thoroughly commented!  Details of function implementation is all contained in the project files.
+
+Disclaimers:
+
+Many of the functions (particulary in SymbCheck_Real) only work in conjuction with each other, and used in a specific order.  Beware of switching the order they are called in, especially in the constructors!
+
+Also, just a heads-up that there is not much error-checking in terms of arguments for many of the functions.
+
+Coming up:
+
+1. Implement checking for the closure axioms!
+2. Write SymbCheck_Complex class (SymbCheck_Real only works for real-number algebra)
+3. Get this to work with matrix vector spaces
+4. Maybe find more examples of vector spaces which define scalar multiplication/addition in non-standard ways; and, find counter-examples i.e. spaces which are not vector spaces (axioms fail)
+5. Far future: ideally, this would work with function spaces too (probably implementing for polynomials would be the first step here)
+
+Well, I hope you enjoyed my vector space project!  Feel free to fork the repository and mess around with it however you want.  If you have any improvements/suggestions to make please let me know!
+
+
+Thanks! :)
