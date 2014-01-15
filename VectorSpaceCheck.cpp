@@ -73,7 +73,7 @@ template <class VS, const int len> bool VectorSpaceCheck<VS, len>::checkAxiom3()
     // so, the zero vector must be an actual value, and not contain any variables
     bool isInt = true;
     for (int i = 0; i < len; ++ i)
-        isInt = (isInt && z[i].isInteger()); // check to make sure every element in 0 is a value
+        isInt = (isInt && z[i].isValue()); // check to make sure every element in 0 is a value
 
     return isInt;
 }
