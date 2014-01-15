@@ -6,10 +6,10 @@
 #include <vector>
 
 std::vector<std::string> splitBy(char, const std::string&);
-std::vector<int> colRemCoeff(std::vector<std::string>& v);
-void simpVars(std::vector<std::string>& v, std::vector<int>& c);
+std::vector<double> colRemCoeff(std::vector<std::string>& v);
+void simpVars(std::vector<std::string>& v, std::vector<double>& c);
 bool contains(const std::vector<std::string>& v, const std::string& check, int& index);
-void remZeros(std::vector<std::string>& v, std::vector<int>& c);
+void remZeros(std::vector<std::string>& v, std::vector<double>& c);
 
 class SymbCheck_Real {
 
@@ -29,7 +29,7 @@ class SymbCheck_Real {
 
     private:
         std::vector<std::string> vars;
-        std::vector<int> coeffs;
+        std::vector<double> coeffs;
 
 };
 

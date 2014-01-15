@@ -139,16 +139,16 @@ bool contains(const std::vector<std::string>& v, const std::string& check, int& 
     return false;
 }
 
-std::vector<int> colRemCoeff(std::vector<std::string>& v) {
-    std::vector<int> coeffs(v.size());
+std::vector<double> colRemCoeff(std::vector<std::string>& v) {
+    std::vector<double> coeffs(v.size());
 
     for (int i = 0; i < v.size(); ++ i) {
         std::vector<std::string> vSplit = splitBy('*', v[i]);
-        int curCoeff = 1;
+        double curCoeff = 1;
         std::string curVar = "";
         for (int j = 0; j < vSplit.size(); ++ j) {
             std::stringstream sstm(vSplit[j]);
-            int val = 0;
+            double val = 0;
             sstm >> val;
             if (sstm.fail()) {
                 curCoeff *= 1;
@@ -168,10 +168,10 @@ std::vector<int> colRemCoeff(std::vector<std::string>& v) {
     return coeffs;
 }
 
-void simpVars(std::vector<std::string>& v, std::vector<int>& c) {
+void simpVars(std::vector<std::string>& v, std::vector<double>& c) {
     // this is to remove duplicates.  the vector should contain a list of all the variables, as a set
     std::vector<std::string> vSet;
-    std::vector<int> cSet;
+    std::vector<double> cSet;
     for (int i = 0; i < v.size(); ++ i) {
         int index = i; // index will be changed to the value of where the value is stored in vSet
         if (!contains(vSet, v[i], index)) {
@@ -185,9 +185,9 @@ void simpVars(std::vector<std::string>& v, std::vector<int>& c) {
     c = cSet;
 }
 
-void remZeros(std::vector<std::string>& v, std::vector<int>& c) {
+void remZeros(std::vector<std::string>& v, std::vector<double>& c) {
     std::vector<std::string> vNO;
-    std::vector<int> cNO;
+    std::vector<double> cNO;
 
     for (int i = 0; i < v.size(); ++ i) {
         if (c[i] != 0) {
